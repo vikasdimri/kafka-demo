@@ -1,0 +1,24 @@
+dependencies {
+	// Spring
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// lombok
+	compile 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+	// json parser
+	compile 'com.fasterxml.jackson.core:jackson-databind'
+
+	// micrometer
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+	compile 'io.micrometer.prometheus:prometheus-rsocket-spring:0.9.0'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
