@@ -1,0 +1,22 @@
+server:
+  port: 8083
+#logging
+logging:
+  level:
+    root:INFO
+  pattern:
+    console:{\"%p\",\"%thread\",\"%logger{0}\",\"%replace(%m%ex){'[\r\n]+', '\\n'}%nopex\"}%n
+#micrometer
+management:
+  metrics:
+    export:
+    prometheus:
+    enabled:false
+  tags:
+    app:address-book-receiver
+  endpoint:
+    metrics:
+    enabled:true
+    web:
+    exposure:
+    include:*
