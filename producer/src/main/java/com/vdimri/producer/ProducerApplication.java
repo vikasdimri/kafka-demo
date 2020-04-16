@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SenderApplication {
+public class ProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SenderApplication.class, args);
+		SpringApplication.run(com.vdimri.sender.ProducerApplication.class, args);
 	}
 
 }

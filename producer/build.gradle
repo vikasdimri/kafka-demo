@@ -4,7 +4,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	//Spring kafka
-	implementation 'org.springframework.kafka:spring-kafka'
+	compile 'org.springframework.kafka:spring-kafka'
 
 	// lombok
 	compile 'org.projectlombok:lombok:1.18.12'
