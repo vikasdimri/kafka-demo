@@ -1,5 +1,7 @@
-package com.vdimri.producer;
+package com.vdimri.producer.controller;
 
+import com.vdimri.producer.model.Address;
+import com.vdimri.producer.services.AddressBookService;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +17,18 @@ public class AddressBookController {
 
     private MeterRegistry meterRegistry;
 
-    public AddressBookController(MeterRegistry meterRegistry) {
+    private AddressBookService service;
+
+    public AddressBookController(MeterRegistry meterRegistry, AddressBookService service) {
         this.meterRegistry = meterRegistry;
+        this.service = service;
     }
 
     @ApiOperation(value = "Endpoint to add address in the address book")
-    @PostMapping(path= "/add", consumes = "application/json", produces = "application/json")
-    public void addInAddressBook(@RequestBody String request) {
+    @PostMapping(path= "/add", consumes = "application/json")
+    public void addInAddressBook(@RequestBody String address) {
         meterRegistry.counter("address.add.request").increment();
-        log.debug("Add address: "+request.toString());
+        service.publish(address);
+        log.debug("Add address: "+address.toString());
     }
 }

@@ -1,32 +1,36 @@
 server:
-  port:8082
+  port: 8082
+# kafka
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+kafka:
+  topic:
+    name: address
+
+#micrometer
+management:
+  endpoint:
+    metrics:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: false
+    tags:
+      app: address-book-invoker
 
 #logging level
 logging:
   level:
-    root:INFO
+    root: INFO
   pattern:
-    console:{\"%p\",\"%thread\",\"%logger{0}\",\"%replace(%m%ex){'[\r\n]+', '\\n'}%nopex\"}%n
-
-#micrometer
-management:
-  metrics:
-    export:
-      prometheus:
-        enabled:false
-  tags:
-    app:address-book-sender
-  endpoint:
-    metrics:
-      enabled:true
-  endpoints:
-    web:
-      exposure:
-        include=*
-
-# kafka
-kafka:
-  boot:
-    server: localhost:9092
-  topic:
-    name: address-sender
+    console: "{\"%p\",\"%thread\",\"%logger{0}\",\"%replace(%m%ex){'[\r\n]+', '\\n'}%nopex\"}%n"

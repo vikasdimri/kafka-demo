@@ -1,0 +1,25 @@
+server:
+    port: 8081
+generator:
+    base:
+        url: http://localhost:8082
+logging:
+    level:
+        root: DEBUG
+    pattern:
+        console: "{\"%p\",\"%thread\",\"%logger{0}\",\"%replace(%m%ex){'[\r\n]+', '\\n'}%nopex\"}%n"
+management:
+    endpoint:
+        metrics:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: false
+        tags:
+            app: address-book-invoker
+

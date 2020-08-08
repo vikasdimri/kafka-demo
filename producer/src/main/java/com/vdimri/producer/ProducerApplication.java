@@ -1,4 +1,4 @@
-package com.vdimri.sender;
+package com.vdimri.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(com.vdimri.sender.ProducerApplication.class, args);
+		SpringApplication.run(ProducerApplication.class, args);
 	}
 
 }

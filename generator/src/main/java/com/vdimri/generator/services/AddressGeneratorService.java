@@ -1,4 +1,4 @@
-package com.vdimri.generator;
+package com.vdimri.generator.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vdimri.generator.model.Addresses;
@@ -15,24 +15,20 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
 
-@Service
 @Slf4j
-public class GeneratorService {
+@Service
+public class AddressGeneratorService {
 
     private Root root;
     private int offset = 0;
     private int size;
     private int position = 0;
 
-    public Addresses addressGenerator() {
+    public Addresses addressGenerator() throws IOException {
         Addresses address = null;
         if (root == null) {
-            try {
-                root = readAddressesJson();
-                log.debug("Root:::::::::::::::::"+root.toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            root = readAddressesJson();
+            log.debug("Root :: ",root.toString());
         }
         address = getAddress();
         return address;
