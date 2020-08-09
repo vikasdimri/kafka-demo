@@ -1,4 +1,4 @@
-package com.vdimri.consumer;
+package com.vdimri.consumer.model;
 
 import lombok.Builder;
 import lombok.Data;
