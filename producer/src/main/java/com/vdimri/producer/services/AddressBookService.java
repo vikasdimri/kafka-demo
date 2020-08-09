@@ -22,25 +22,10 @@ public class AddressBookService {
     @Value("${kafka.topic.name}")
     private String topicName;
 
-    public void publish(Address address) {
-        try {
-            Map<String, Object> headers = new HashMap<>();
-            headers.put(KafkaHeaders.TOPIC, topicName);
-            kafkaTemplate.send(new GenericMessage<Address>(address, headers));
-            log.info("Data - " + address.toString() + " sent to Kafka Topic - " + topicName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void publish(String address) {
-        try {
-            Map<String, Object> headers = new HashMap<>();
-            headers.put(KafkaHeaders.TOPIC, topicName);
-            kafkaTemplate.send(new GenericMessage<String>(address, headers));
-            log.info("Data - " + address.toString() + " sent to Kafka Topic - " + topicName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Map<String, Object> headers = new HashMap<>();
+        headers.put(KafkaHeaders.TOPIC, topicName);
+        kafkaTemplate.send(new GenericMessage<String>(address, headers));
+        log.info("Data - " + address.toString() + " sent to Kafka Topic - " + topicName);
     }
 }
